@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Igor - Desenvolvedor</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Igor</h1>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="#jogo">Jogo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <div class="hero-content">
+        <div class="foto-container">
+          <img src="/static/foto.jpg" alt="Foto do Igor" class="foto-perfil">
+        </div>
+        <h2>Olá, eu sou o Igor!</h2>
+        <p class="subtitle">Graduando em Estatística & Entusiasta de Programação</p>
+        <p>Começando minha jornada no mundo dos dados e programação</p>
+        <a href="#contato" class="btn-primary">Entre em Contato</a>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <h2>Sobre Mim</h2>
+        <p>Sou estudante de Estatística no 1º semestre, apaixonado por dados e programação. Estou começando minha jornada no mundo da tecnologia, com foco em análise de dados e desenvolvimento de soluções.</p>
+        <div class="stats">
+          <div class="stat">
+            <h3>2</h3>
+            <p>Projetos Concluídos</p>
+          </div>
+          <div class="stat">
+            <h3>1º</h3>
+            <p>Semestre na Faculdade</p>
+          </div>
+          <div class="stat">
+            <h3>69%</h3>
+            <p>Dedicação</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="container">
+        <h2>Habilidades</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>📊 R Programming</h3>
+            <p>Análise Estatística, Visualização</p>
+          </div>
+          <div class="skill-card">
+            <h3>📈 Estatística</h3>
+            <p>Fundamentos, Probabilidade</p>
+          </div>
+          <div class="skill-card">
+            <h3>🐍 Python (Aprendendo)</h3>
+            <p>Pandas, Flask, Básico</p>
+          </div>
+          <div class="skill-card">
+            <h3>📋 Excel & Planilhas</h3>
+            <p>Análise de Dados, Gráficos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="container">
+        <h2>Projetos</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Aplicativo em R</h3>
+            <p>Primeiro projeto desenvolvido em R para análise estatística de dados durante um evento de espaço das profissões.</p>
+            <div class="tech-tags">
+              <span>R</span>
+              <span>Estatística</span>
+              <span>Análise de Dados</span>
+              <div class= "centered">
+              <a href="https://github.com/Igor-ht-1/Trabalho-espaco-das-profissoes-Nato-Igor" class="btn-primary" target="_blank">Ver                 no GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Portfólio Web</h3>
+            <p>Este portfólio pessoal desenvolvido em Flask para aprender desenvolvimento web.</p>
+            <div class="tech-tags">
+              <span>Python</span>
+              <span>Flask</span>
+              <span>HTML/CSS</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Projeto Futuro</h3>
+            <p>Projeto colaborativo em desenvolvimento com um amigo, focado em análise de dados.</p>
+            <div class="tech-tags">
+              <span>R</span>
+              <span>Python</span>
+              <span>Em Breve</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <h2>Vamos Conversar?</h2>
+        <p>Interessado em trabalhar juntos? Entre em contato!</p>
+        <div class="contact-links">
+          <a href="mailto:igorsoares2006r@gmail.com" class="contact-btn">📧 Email</a>
+          <a href="https://github.com/Igor-ht-1" class="contact-btn">🐙 GitHub</a>
+          <a href="https://www.instagram.com/igor_r._/" class="contact-btn">📷 Instagram</a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Igor. Feito com ❤️ e muita netflix.</p>
+    
+    <section id="jogo">
+      <div class="container">
+        <h2>🎮 Jogo da Velha</h2>
+        <p>Que tal uma partidinha? Desafie um amigo!</p>
+        <div class="game-container">
+          <div class="game-info">
+            <p class="current-player">Vez do jogador: <span id="currentPlayer">X</span></p>
+            <button id="resetBtn" class="btn-primary">🔄 Novo Jogo</button>
+          </div>
+          <div class="game-board" id="gameBoard">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+          </div>
+          <p class="game-message" id="gameMessage">Boa sorte! 🍀</p>
+        </div>
+      </div>
+    </section>
+  </footer>
+
+  <script>
+    // Jogo da Velha
+    class TicTacToe {
+      constructor() {
+        this.board = ['', '', '', '', '', '', '', '', ''];
+        this.currentPlayer = 'X';
+        this.gameActive = true;
+        this.winningConditions = [
+          [0, 1, 2], [3, 4, 5], [6, 7, 8], // linhas
+          [0, 3, 6], [1, 4, 7], [2, 5, 8], // colunas
+          [0, 4, 8], [2, 4, 6] // diagonais
+        ];
+        this.initGame();
+      }
+
+      initGame() {
+        const cells = document.querySelectorAll('.cell');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        cells.forEach(cell => {
+          cell.addEventListener('click', this.handleCellClick.bind(this));
+        });
+        
+        resetBtn.addEventListener('click', this.resetGame.bind(this));
+        this.updateGameMessage('Boa sorte! 🍀');
+      }
+
+      handleCellClick(event) {
+        const cell = event.target;
+        const index = parseInt(cell.dataset.index);
+
+        if (this.board[index] !== '' || !this.gameActive) return;
+
+        this.board[index] = this.currentPlayer;
+        cell.textContent = this.currentPlayer;
+        cell.classList.add('taken');
+
+        if (this.checkWinner()) {
+          this.updateGameMessage(`🎉 Jogador ${this.currentPlayer} venceu!`);
+          this.gameActive = false;
+          return;
+        }
+
+        if (this.checkDraw()) {
+          this.updateGameMessage('🤝 Empate! Tentem novamente!');
+          this.gameActive = false;
+          return;
+        }
+
+        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+        document.getElementById('currentPlayer').textContent = this.currentPlayer;
+        this.updateGameMessage(`Vez do jogador ${this.currentPlayer}`);
+      }
+
+      checkWinner() {
+        return this.winningConditions.some(condition => {
+          const [a, b, c] = condition;
+          return this.board[a] && 
+                 this.board[a] === this.board[b] && 
+                 this.board[a] === this.board[c];
+        });
+      }
+
+      checkDraw() {
+        return this.board.every(cell => cell !== '');
+      }
+
+      updateGameMessage(message) {
+        document.getElementById('gameMessage').textContent = message;
+      }
+
+      resetGame() {
+        this.board = ['', '', '', '', '', '', '', '', ''];
+        this.currentPlayer = 'X';
+        this.gameActive = true;
+        
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach(cell => {
+          cell.textContent = '';
+          cell.classList.remove('taken');
+        });
+        
+        document.getElementById('currentPlayer').textContent = 'X';
+        this.updateGameMessage('Boa sorte! 🍀');
+      }
+    }
+
+    // Inicializar o jogo quando a página carregar
+    document.addEventListener('DOMContentLoaded', () => {
+      new TicTacToe();
+    });
+  </script>
+</body>
+</html>
