@@ -414,6 +414,57 @@ h2 {
   min-height: 2rem;
 }
 
+/* ===== SCORE BOARD ===== */
+.score-board {
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(26, 26, 46, 0.8);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(187, 134, 252, 0.3);
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.15);
+  max-width: 400px;
+}
+
+.score-board h3 {
+  margin: 0 0 15px 0;
+  color: #bb86fc;
+  font-size: 1.3rem;
+  text-shadow: 0 0 8px rgba(187, 134, 252, 0.4);
+}
+
+.scores {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.score {
+  flex: 1;
+  padding: 12px;
+  background: rgba(15, 15, 35, 0.6);
+  border-radius: 10px;
+  border: 1px solid rgba(187, 134, 252, 0.2);
+}
+
+.score span {
+  display: block;
+  text-align: center;
+}
+
+.score span:first-child {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 5px;
+}
+
+.score span:last-child {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+}
 /* Footer */
 footer {
   background: rgba(15, 15, 35, 0.8);

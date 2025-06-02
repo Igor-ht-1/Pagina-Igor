@@ -1,4 +1,3 @@
-<!-- Salve este como index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -44,7 +43,7 @@
             <p>Projetos Concluídos</p>
           </div>
           <div class="stat">
-            <h3>0.2</h3>
+            <h3>0.4</h3>
             <p>Anos de Experiência</p>
           </div>
           <div class="stat">
@@ -118,129 +117,172 @@
         </div>
       </div>
     </section>
+    
+    <section id="jogo">
+    <div class="container">
+      <h2>🎮 Jogo da Velha</h2>
+      <p>Que tal uma partidinha? Desafie um amigo!</p>
+      <div class="game-container">
+        <div class="game-info">
+          <p class="current-player">Vez do jogador: <span id="currentPlayer">X</span></p>
+          <button id="resetBtn" class="btn-primary">🔄 Novo Jogo</button>
+        </div>
+        <div class="game-board" id="gameBoard">
+          <div class="cell" data-index="0"></div>
+          <div class="cell" data-index="1"></div>
+          <div class="cell" data-index="2"></div>
+          <div class="cell" data-index="3"></div>
+          <div class="cell" data-index="4"></div>
+          <div class="cell" data-index="5"></div>
+          <div class="cell" data-index="6"></div>
+          <div class="cell" data-index="7"></div>
+          <div class="cell" data-index="8"></div>
+        </div>
+      </div>
+      <p class="game-message" id="gameMessage">Boa sorte! 🍀</p>
+      
+      <div class="score-board">
+        <h3>Placar</h3>
+        <div class="scores">
+          <div class="score">
+            <span>Jogador X:</span>
+            <span id="scoreX">0</span>
+          </div>
+          <div class="score">
+            <span>Jogador O:</span>
+            <span id="scoreO">0</span>
+          </div>
+          <div class="score">
+            <span>Empates:</span>
+            <span id="scoreDraw">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   </main>
 
   <footer>
-    <p>&copy; 2024 Igor. Feito com ❤️ e muita netflix.</p>
-    
-    <section id="jogo">
-      <div class="container">
-        <h2>🎮 Jogo da Velha</h2>
-        <p>Que tal uma partidinha? Desafie um amigo!</p>
-        <div class="game-container">
-          <div class="game-info">
-            <p class="current-player">Vez do jogador: <span id="currentPlayer">X</span></p>
-            <button id="resetBtn" class="btn-primary">🔄 Novo Jogo</button>
-          </div>
-          <div class="game-board" id="gameBoard">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
-          </div>
-          <p class="game-message" id="gameMessage">Boa sorte! 🍀</p>
-        </div>
-      </div>
-    </section>
+    <p>&copy; 2025 Igor. Feito com ❤️ e muita netflix.</p>
   </footer>
 
 <script>
-    // Jogo da Velha
-    class TicTacToe {
-      constructor() {
-        this.board = ['', '', '', '', '', '', '', '', ''];
-        this.currentPlayer = 'X';
-        this.gameActive = true;
-        this.winningConditions = [
-          [0, 1, 2], [3, 4, 5], [6, 7, 8], // linhas
-          [0, 3, 6], [1, 4, 7], [2, 5, 8], // colunas
-          [0, 4, 8], [2, 4, 6] // diagonais
-        ];
-        this.initGame();
-      }
+// Jogo da Velha
+class TicTacToe {
+  constructor() {
+    this.board = ['', '', '', '', '', '', '', '', ''];
+    this.currentPlayer = 'X';
+    this.gameActive = true;
+    this.winningConditions = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], // linhas
+      [0, 3, 6], [1, 4, 7], [2, 5, 8], // colunas
+      [0, 4, 8], [2, 4, 6] // diagonais
+    ];
+    
+    // Carrega o placar do localStorage ou inicializa
+    this.scores = JSON.parse(localStorage.getItem('tictactoe_scores')) || {
+      X: 0,
+      O: 0,
+      draw: 0
+    };
+    
+    this.initGame();
+    this.updateScoreDisplay();
+  }
 
-      initGame() {
-        const cells = document.querySelectorAll('.cell');
-        const resetBtn = document.getElementById('resetBtn');
-        
-        cells.forEach(cell => {
-          cell.addEventListener('click', this.handleCellClick.bind(this));
-        });
-        
-        resetBtn.addEventListener('click', this.resetGame.bind(this));
-        this.updateGameMessage('Boa sorte! 🍀');
-      }
+  initGame() {
+    const cells = document.querySelectorAll('.cell');
+    const resetBtn = document.getElementById('resetBtn');
+    
+    cells.forEach(cell => {
+      cell.addEventListener('click', this.handleCellClick.bind(this));
+    });
+    
+    resetBtn.addEventListener('click', this.resetGame.bind(this));
+    this.updateGameMessage('Boa sorte! 🍀');
+  }
 
-      handleCellClick(event) {
-        const cell = event.target;
-        const index = parseInt(cell.dataset.index);
+  handleCellClick(event) {
+    const cell = event.target;
+    const index = parseInt(cell.dataset.index);
 
-        if (this.board[index] !== '' || !this.gameActive) return;
+    if (this.board[index] !== '' || !this.gameActive) return;
 
-        this.board[index] = this.currentPlayer;
-        cell.textContent = this.currentPlayer;
-        cell.classList.add('taken');
+    this.board[index] = this.currentPlayer;
+    cell.textContent = this.currentPlayer;
+    cell.classList.add('taken');
 
-        if (this.checkWinner()) {
-          this.updateGameMessage(`🎉 Jogador ${this.currentPlayer} venceu!`);
-          this.gameActive = false;
-          return;
-        }
-
-        if (this.checkDraw()) {
-          this.updateGameMessage('🤝 Empate! Tentem novamente!');
-          this.gameActive = false;
-          return;
-        }
-
-        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
-        document.getElementById('currentPlayer').textContent = this.currentPlayer;
-        this.updateGameMessage(`Vez do jogador ${this.currentPlayer}`);
-      }
-
-      checkWinner() {
-        return this.winningConditions.some(condition => {
-          const [a, b, c] = condition;
-          return this.board[a] && 
-                 this.board[a] === this.board[b] && 
-                 this.board[a] === this.board[c];
-        });
-      }
-
-      checkDraw() {
-        return this.board.every(cell => cell !== '');
-      }
-
-      updateGameMessage(message) {
-        document.getElementById('gameMessage').textContent = message;
-      }
-
-      resetGame() {
-        this.board = ['', '', '', '', '', '', '', '', ''];
-        this.currentPlayer = 'X';
-        this.gameActive = true;
-        
-        const cells = document.querySelectorAll('.cell');
-        cells.forEach(cell => {
-          cell.textContent = '';
-          cell.classList.remove('taken');
-        });
-        
-        document.getElementById('currentPlayer').textContent = 'X';
-        this.updateGameMessage('Boa sorte! 🍀');
-      }
+    if (this.checkWinner()) {
+      this.updateGameMessage(`🎉 Jogador ${this.currentPlayer} venceu!`);
+      this.scores[this.currentPlayer]++;
+      this.saveScores();
+      this.updateScoreDisplay();
+      this.gameActive = false;
+      return;
     }
 
-    // Inicializar o jogo quando a página carregar
-    document.addEventListener('DOMContentLoaded', () => {
-      new TicTacToe();
+    if (this.checkDraw()) {
+      this.updateGameMessage('🤝 Empate! Tentem novamente!');
+      this.scores.draw++;
+      this.saveScores();
+      this.updateScoreDisplay();
+      this.gameActive = false;
+      return;
+    }
+
+    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+    document.getElementById('currentPlayer').textContent = this.currentPlayer;
+    this.updateGameMessage(`Vez do jogador ${this.currentPlayer}`);
+  }
+
+  checkWinner() {
+    return this.winningConditions.some(condition => {
+      const [a, b, c] = condition;
+      return this.board[a] && 
+             this.board[a] === this.board[b] && 
+             this.board[a] === this.board[c];
     });
+  }
+
+  checkDraw() {
+    return this.board.every(cell => cell !== '');
+  }
+
+  updateGameMessage(message) {
+    document.getElementById('gameMessage').textContent = message;
+  }
+
+  updateScoreDisplay() {
+    document.getElementById('scoreX').textContent = this.scores.X;
+    document.getElementById('scoreO').textContent = this.scores.O;
+    document.getElementById('scoreDraw').textContent = this.scores.draw;
+  }
+
+  saveScores() {
+    localStorage.setItem('tictactoe_scores', JSON.stringify(this.scores));
+  }
+
+  resetGame() {
+    this.board = ['', '', '', '', '', '', '', '', ''];
+    this.currentPlayer = 'X';
+    this.gameActive = true;
+    
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => {
+      cell.textContent = '';
+      cell.classList.remove('taken');
+    });
+    
+    document.getElementById('currentPlayer').textContent = 'X';
+    this.updateGameMessage('Boa sorte! 🍀');
+  }
+}
+
+// Inicializar o jogo quando a página carregar
+document.addEventListener('DOMContentLoaded', () => {
+  new TicTacToe();
+});
   </script>
 </body>
 </html>
