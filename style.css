@@ -157,7 +157,75 @@ h2 {
   color: white;
   font-weight: 700;
 }
+/* Estilo para links de projeto */
+.project-link {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
 
+.project-link:hover {
+  color: #bb86fc;
+  text-shadow: 0 0 8px rgba(187, 134, 252, 0.6);
+}
+
+/* Efeito de sublinhado animado */
+.project-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #a29bfe;
+  transition: width 0.3s ease;
+}
+
+.project-link:hover::after {
+  width: 100%;
+}
+
+/* Estilo para o emoji */
+.link-emoji {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.project-link:hover .link-emoji {
+  transform: rotate(15deg) scale(1.2);
+}
+
+/* Tooltip personalizado */
+.project-link[title] {
+  position: relative;
+}
+
+.project-link[title]:hover::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 26, 46, 0.9);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  border: 1px solid rgba(187, 134, 252, 0.3);
+}
+.link-emoji::after {
+  content: "🔗";
+  opacity: 0;
+}
+.project-link:hover .link-emoji {
+  opacity: 0;
+}
+.project-link:hover .link-emoji::after {
+  opacity: 1;
+}
 #sobre p {
   font-size: 1.2rem;
   text-align: center;
