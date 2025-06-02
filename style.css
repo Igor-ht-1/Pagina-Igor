@@ -117,7 +117,7 @@ nav a:hover {
 
 .btn-primary {
   display: inline-block;
-  padding: 12px 30px;
+  padding: 6px 20px;
   background: linear-gradient(145deg, #6c5ce7, #a29bfe);
   color: white;
   text-decoration: none;
@@ -166,7 +166,38 @@ h2 {
   color: white;
   opacity: 0.9;
 }
+.nato-link {
+  color: #bb86fc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
 
+.nato-link:hover {
+  color: #a29bfe;
+  text-shadow: 0 0 8px rgba(187, 134, 252, 0.6);
+}
+
+/* Efeito opcional de sublinhado animado */
+.nato-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #a29bfe;
+  transition: width 0.3s ease;
+}
+
+.nato-link:hover::after {
+  width: 100%;
+}
+.nato-link:hover::before {
+  content: "👨‍💻🤓";
+  margin-right: 3px;
+}
 /* Stats */
 .stats {
   display: grid;
