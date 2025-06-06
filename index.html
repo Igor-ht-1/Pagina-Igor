@@ -192,16 +192,35 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Igor. Feito com ❤ e muita netflix.</p>
-    
-    <div class="footer-secret">
-      Psst... você encontrou o easter egg! 👾<br>
+  <p>&copy; 2025 Igor. Feito com ❤ e muita netflix.</p>
+  
+  <div class="footer-secret">
+    <span class="footer-secret-trigger" style="cursor:pointer;">
+      Psst... você encontrou o easter egg! 👾
+    </span>
+    <div class="footer-secret-form">
       <input type="number" id="secretNumberInput" placeholder="Digite um número secreto">
-      <button id="secretNumberBtn">Enviar</button>
+      <button id="secretNumberBtn">Enviar <span style="font-size:1.1em;">🔒</span></button>
       <span id="secretNumberMsg"></span>
     </div>
-  </footer>
+  </div>
+</footer>
 
+  <div id="easterEggOverlay" style="display:none;">
+    <div class="easter-egg-modal">
+      <img src="foto_amigos.jpg" alt="Igor secreto" class="easter-egg-img">
+      <p class="easter-egg-text">Parabéns! Você descobriu o segredo do Igor! 🎉
+      <br>Uma amizade mais que boa, perfeita 🕵️‍♂
+      <br>Uma menina especial que cada dia diverte mais e mais o dia a dia👭
+      <br>Mas lembre-se, é um segredo! 🤫
+      <br>Amizade boa é assim, a gente não tem que ficar reconstruindo🧱
+      <br>É sobre aproveitar os momentos juntos, rir das besteiras e apoiar um ao outro sempre! 🥳
+      <br>Obrigado por fazer parte da minha jornada! ❤️ menina dorminhoca 😴
+
+      </p>
+      <button class="easter-egg-close" onclick="document.getElementById('easterEggOverlay').style.display='none';document.body.style.overflow='';">Fechar</button>
+    </div>
+  </div>
 <script>
 // Jogo da Velha
 class TicTacToe {
@@ -323,13 +342,31 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('secretNumberBtn').addEventListener('click', function() {
   const input = document.getElementById('secretNumberInput');
   const msg = document.getElementById('secretNumberMsg');
+  const overlay = document.getElementById('easterEggOverlay');
   const valor = input.value;
-  if (valor === '') {
-    msg.textContent = 'Por favor, digite um número!';
-    msg.style.color = 'red';
+  if (valor === '1304') {
+    msg.textContent = '';
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // impede scroll
   } else {
     msg.textContent = `Você digitou: ${valor}`;
-    msg.style.color = 'green';
+    msg.style.color = 'limegreen';
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
+
+// Fechar o overlay ao clicar fora ou apertar ESC (opcional)
+document.getElementById('easterEggOverlay').addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('easterEggOverlay').style.display = 'none';
+    document.body.style.overflow = '';
   }
 });
   </script>
