@@ -104,7 +104,25 @@
               <span>CSS</span>
             </div>
           </div>
-          <div class="project-card"><h3>Projeto Futuro com Amigo (<a href="https://github.com/Nathanael-nt-13" target="_blank" class="nato-link" title="Visitar perfil do Nato">Nato🛹💻</a>)</h3>
+           <div class="project-card">
+          <h3>
+            <a href="https://github.com/Igor-ht-1/Pagina-Igor" 
+              class="project-link" 
+              target="_blank"
+              title="Ver projeto no GitHub">
+              Baixador de musicas do spotify
+              <span class="link-emoji">📖</span>
+            </a>
+          </h3>
+            <p>E um projeto que pega os ids de alguma playlist criada pelo usuario(no spotify), pesquisa ela no youtube e baixa em mp3.</p>
+            <div class="tech-tags">
+              <span>Python</span>
+              <span>Spotify➡Youtube➡Mp3 </span>
+              <span>Convertor </span>
+            </div>
+          </div>
+          <div class="project-card">
+          <h3>Projeto Futuro com Amigo (<a href="https://github.com/Nathanael-nt-13" target="_blank" class="nato-link" title="Visitar perfil do Nato">Nato🛹💻</a>)</h3>
             <p>Projeto em desenvolvimento colaborativo focado em IA (em breve!).</p>
             <div class="tech-tags">
               <span>C</span>
@@ -174,9 +192,14 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Igor. Feito com ❤️ e muita netflix.</p>
+    <p>&copy; 2025 Igor. Feito com ❤ e muita netflix.</p>
     
-    <p class="footer-secret">Psst... você encontrou o easter egg! 👾</p>
+    <div class="footer-secret">
+      Psst... você encontrou o easter egg! 👾<br>
+      <input type="number" id="secretNumberInput" placeholder="Digite um número secreto">
+      <button id="secretNumberBtn">Enviar</button>
+      <span id="secretNumberMsg"></span>
+    </div>
   </footer>
 
 <script>
@@ -294,6 +317,20 @@ class TicTacToe {
 // Inicializar o jogo quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
   new TicTacToe();
+});
+
+// Easter egg: inserir número secreto
+document.getElementById('secretNumberBtn').addEventListener('click', function() {
+  const input = document.getElementById('secretNumberInput');
+  const msg = document.getElementById('secretNumberMsg');
+  const valor = input.value;
+  if (valor === '') {
+    msg.textContent = 'Por favor, digite um número!';
+    msg.style.color = 'red';
+  } else {
+    msg.textContent = `Você digitou: ${valor}`;
+    msg.style.color = 'green';
+  }
 });
   </script>
 </body>
